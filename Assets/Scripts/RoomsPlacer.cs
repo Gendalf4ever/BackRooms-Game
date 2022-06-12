@@ -13,6 +13,7 @@ public class RoomsPlacer : MonoBehaviour
        
         spawnedRooms = new Room[11, 11];
         spawnedRooms[5, 5] = StartRoom;
+        StartRoom.transform.position = new Vector3(115, 0, -115);
         for (int i = 0; i <= 12; i++)
         {
             PlaceOneRoom();
@@ -41,11 +42,12 @@ public class RoomsPlacer : MonoBehaviour
         // Эту строчку можно заменить на выбор комнаты с учётом её вероятности, вроде как в ChunksPlacer.GetRandomChunk()
         Room newRoom = Instantiate(RoomPrefabs[Random.Range(0, RoomPrefabs.Length)]);
         Vector2Int position = vacantPlaces.ElementAt(Random.Range(0, vacantPlaces.Count));
-        newRoom.transform.position = new Vector3(position.x - 5, 0, position.y - 5) * 115; 
+        newRoom.transform.position = new Vector3(position.x - 5, 0, position.y - 5) * 113;
+        
         spawnedRooms[position.x, position.y] = newRoom;
     }
     /*
-     * 115
+
     int limit = 500;
         while (limit-- > 0)
         {
